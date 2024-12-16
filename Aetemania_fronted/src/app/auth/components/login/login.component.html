@@ -1,0 +1,59 @@
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+    <div class="flex flex-column align-items-center justify-content-center">
+      <div style="border-radius: 56px; padding: 0.5rem; background: linear-gradient(180deg, var(--primary-color) 20%, rgba(33, 150, 243, 0) 40%);">
+        <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius: 53px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+          <div class="text-center mb-5">
+            <img src="https://scontent.fuio5-1.fna.fbcdn.net/v/t39.30808-6/449729671_1029265878538390_2854106809371863285_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHwsIQYpQr--vxMoTuGDy8eeTGFFnKIlKZ5MYUWcoiUpsZuJsNodNpOPWHkCzI5k4tl5baneI2S_-wJRcGfWHob&_nc_ohc=uplPb7EW85oQ7kNvgHCa2aT&_nc_zt=23&_nc_ht=scontent.fuio5-1.fna&_nc_gid=AnorImclS3SlURWyvh9HOsH&oh=00_AYDbjZ2Hy84JZlPc2nZNIGxprnkFRnRvdifkj2Rq4r3gqA&oe=6764ADDA" alt="Avatar" height="70" class="mb-3" style="border-radius: 50%;">
+            <div class="text-900 text-3xl font-medium mb-3">Bienvenidos a Artemania</div>
+            <span class="text-600 font-medium text-lg">Ingresa</span>
+          </div>
+  
+          <form [formGroup]="loginForm" (ngSubmit)="funIngresar()">
+            <div class="field">
+              <label for="email1" class="block text-900 text-lg font-medium mb-2">Correo Electrónico</label>
+              <input id="email1" type="email" formControlName="email" placeholder="Email address" 
+                     class="w-full md:w-30rem mb-4 border-round" 
+                     style="padding: 1rem; border: 1px solid var(--surface-border);" />
+              <div *ngIf="isInvalidAndTouched('email')" class="text-red-500 text-sm">
+                <div *ngIf="email?.errors?.['required']">El correo electrónico es obligatorio.</div>
+                <div *ngIf="email?.errors?.['email']">Por favor, ingrese un correo válido.</div>
+              </div>
+            </div>
+  
+            <div class="field">
+              <label for="password1" class="block text-900 font-medium text-lg mb-2">Contraseña</label>
+              <input id="password1" type="password" formControlName="password" placeholder="Password" 
+                     class="w-full md:w-30rem mb-4 border-round" 
+                     style="padding: 1rem; border: 1px solid var(--surface-border);" />
+              <div *ngIf="isInvalidAndTouched('password')" class="text-red-500 text-sm">
+                <div *ngIf="password?.errors?.['required']">La contraseña es obligatoria.</div>
+              </div>
+            </div>
+  
+            <div class="flex align-items-center justify-content-between mb-4">
+              <div class="flex align-items-center">
+                <input id="rememberme1" type="checkbox" formControlName="rememberMe" 
+                       class="mr-2" style="width: 16px; height: 16px;" />
+                <label for="rememberme1" class="text-900 font-medium">Recuérdame</label>
+              </div>
+              <a class="font-medium no-underline text-right cursor-pointer text-primary" 
+                 style="color: var(--primary-color);" [routerLink]="'/auth/olvide'">¿Olvidaste tu Contraseña?</a>
+            </div>
+  
+            <button type="submit" class="w-full p-3 text-lg font-medium" 
+                    style="background-color: var(--primary-color); color: white; border: none; border-radius: 8px;">
+              Iniciar Sesión
+            </button>
+
+            <!-- Botón de registro agregado -->
+            <div class="text-center mt-4">
+              <span class="text-sm">¿No tienes una cuenta?</span>
+              <a class="font-medium no-underline cursor-pointer text-primary" 
+                 [routerLink]="'/auth/register'" 
+                 style="color: var(--primary-color);">Regístrate aquí</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
